@@ -1,0 +1,35 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="container" >
+
+  <div class="topHolder">
+    <!-- Upload icon and button-->
+    <file-pond #myPond
+               [options]="pondOptions"
+               [files]="pondFiles"
+               (oninit)="pondHandleInit()"
+               (onaddfile)="upload($event)">
+    </file-pond>
+
+    <div class="form-input">
+      <form class="example-form" (ngSubmit)="onPost()">
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="Send Files to" name="send files to" [(ngModel)]="data.to" required>
+      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Your Email" name="your email" [(ngModel)]="data.from" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" hintLabel="Max 250 characters">
+        <textarea matInput placeholder="Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="3" maxlength="250"
+                  [(ngModel)]="data.message" name="message">
+          </textarea>
+          <!--//https://www.positronx.io/how-to-use-angular-8-httpclient-to-post-formdata/-->
+          </mat-form-field>
+          <button mat-raised-button color="accent" type="submit">Send</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
